@@ -31,7 +31,7 @@
 		</repository>
 		<repository>
 			<id>mapr-releases</id>
-			<url>http://repository.mapr.com/maven/</url>
+			<url>http://repository.mapr.com/nexus/content/groups/mapr-public/releases/</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
