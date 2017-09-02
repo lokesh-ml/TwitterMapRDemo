@@ -6,7 +6,7 @@ import org.ojai.DocumentStream;
 import com.mapr.db.MapRDB;
 import com.mapr.db.Table;
 
-public class ScanMapRDB {
+public class ReadMapRDB {
 	private static final String TABLE_PATH = "/hashtag_count";
 	private static Table table;
 
