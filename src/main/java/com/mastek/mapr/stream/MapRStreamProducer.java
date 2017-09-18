@@ -5,6 +5,9 @@ import java.util.Properties;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
+import twitter4j.JSONException;
+import twitter4j.JSONObject;
+
 public class MapRStreamProducer {
 
 	// Declare a new producer
@@ -21,8 +24,16 @@ public class MapRStreamProducer {
         producer = new KafkaProducer<String, String>(props);
 	}
 	
-	public void produce(String key, String line){
-		ProducerRecord<String, String> rec = new ProducerRecord<String, String>(topic,key, line);
+	public void produce(String userName, String line){
+		JSONObject record = new JSONObject();
+		try {
+			record.put("user_name", userName);
+			record.put("tweet", line);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		ProducerRecord<String, String> rec = new ProducerRecord<String, String>(topic, record.toString());
         producer.send(rec);
         
 	}
